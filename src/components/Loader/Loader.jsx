@@ -5,7 +5,7 @@ export default function Loader() {
   return (
     <ProgressBar
       height="50"
-      width="500"
+      width="100"
       ariaLabel="progress-bar-loading"
       wrapperStyle={{}}
       wrapperClass={css.center}

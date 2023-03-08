@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AppContainer } from './App.styled';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
@@ -15,19 +15,26 @@ export function App() {
 
   useEffect(() => {
     if (query === '') return;
+    setLoading(true);
     api
       .getImages(query, page)
       .then(({ data }) => {
         setImages(prev => [...prev, ...data.hits]);
         setBtnVisible(page < Math.ceil(data.totalHits / api.per_page));
       })
-      .catch(error => console.log(error));
+      .catch(error => console.log(error))
+      .finally(setLoading(false));
   }, [query, page]);
 
-  const getSearchQuery = searchRequest => setQuery(searchRequest);
+  const getSearchQuery = searchRequest => {
+    setQuery(searchRequest);
+    setImages([]);
+    setPage(1);
+    setBtnVisible(false);
+  };
 
   const loadMoreImg = () => {
-    setPage(prev => prev + 1);
+    setPage(page + 1);
   };
 
   return (
