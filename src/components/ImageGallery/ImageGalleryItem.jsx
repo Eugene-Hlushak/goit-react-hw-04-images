@@ -19,7 +19,9 @@ export default function ImageGalleryItem({ imgId, url, alt, largeImageURL }) {
   };
 
   const closeModalByEsc = e => {
+    console.log(e.code);
     if (e.code === 'Escape') {
+      console.log('need to close modal window');
       setShowModal(false);
     }
   };

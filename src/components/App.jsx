@@ -5,6 +5,7 @@ import ImageGallery from './ImageGallery/ImageGallery';
 import Loader from 'components/Loader/Loader';
 import LoadMoreBtn from './LoadMoreBtn/LoadMoreBtn';
 import * as api from 'api/fetchImg';
+// import smoothScroll from 'api/smothScroll';
 
 export function App() {
   const [query, setQuery] = useState('');
