@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   SearchHeader,
   SearchForm,
@@ -39,3 +40,7 @@ export default function Searchbar({ onSearch }) {
     </SearchHeader>
   );
 }
+
+Searchbar.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+};
