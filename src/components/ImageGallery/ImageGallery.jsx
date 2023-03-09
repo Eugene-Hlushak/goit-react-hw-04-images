@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types';
-import ImageGalleryItem from './ImageGalleryItem';
-import smoothScroll from 'api/smothScroll';
-import { GalleryList } from './ImageGallery.styled';
 import { useRef, useEffect } from 'react';
+import smoothScroll from 'api/smothScroll';
+import ImageGalleryItem from './ImageGalleryItem';
+import { GalleryList } from './ImageGallery.styled';
 
-export default function ImageGallery({ photos }) {
+export default function ImageGallery({ photos, page }) {
   const listRef = useRef();
 
   useEffect(() => {
-    if (listRef) {
-      smoothScroll(listRef.current);
+    if (page === 1) {
+      return;
     }
+    smoothScroll(listRef.current);
   });
 
   return (
@@ -32,4 +33,5 @@ export default function ImageGallery({ photos }) {
 
 ImageGallery.propTypes = {
   photos: PropTypes.array.isRequired,
+  page: PropTypes.number.isRequired,
 };
